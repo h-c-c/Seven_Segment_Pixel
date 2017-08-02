@@ -1,5 +1,15 @@
-// Seven Segment Pixel library simple sketch (c) 2017 Peter Hartmann
-// released under the GPLv3.
+/* Seven Segment Pixel library example code: figure8 
+
+Outlines a figure 8 using individual segments of a seven segment display
+in random colors.
+
+created 2017 
+by Peter Hartmann
+This example code is in the public domain.
+
+<https://blog.hartmanncomputer.com>
+
+*/
 
 #include <Adafruit_NeoPixel.h>
 #include <Seven_Segment_Pixel.h>
