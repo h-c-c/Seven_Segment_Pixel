@@ -9,10 +9,13 @@
 #include <../Adafruit_NeoPixel/Adafruit_NeoPixel.h>
 
 //<<constructor>>
-Seven_Segment_Pixel::Seven_Segment_Pixel(int digitsPerDisplay,
-                                         int pixelsPerSegment, uint16_t n,
+Seven_Segment_Pixel::Seven_Segment_Pixel(uint16_t digitsPerDisplay,
+                                         uint16_t pixelsPerSegment,
+                                         uint16_t numDelimiters,
+                                         uint16_t pixPerDelimiter, uint16_t n,
                                          uint8_t p, uint8_t t)
-    : digPerDisp(digitsPerDisplay), pixPerSeg(pixelsPerSegment) {
+    : digPerDisp(digitsPerDisplay), pixPerSeg(pixelsPerSegment),
+      numDelims(numDelimiters), pixPerDelim(pixPerDelimiter) {
   strip = new Adafruit_NeoPixel(n, p, t);
 }
 //<<destructor>>
@@ -22,28 +25,40 @@ void Seven_Segment_Pixel::beginDisplay() { strip->begin(); }
 
 void Seven_Segment_Pixel::showDisplay() { strip->show(); }
 
-void Seven_Segment_Pixel::updateDigit(int position, int digit, uint8_t RED,
-                                      uint8_t GREEN, uint8_t BLUE) {
+void Seven_Segment_Pixel::updateDigit(uint16_t position, uint16_t digit,
+                                      uint8_t RED, uint8_t GREEN,
+                                      uint8_t BLUE) {
 
-  bitmask = charMap[digit];
+  bitmask = characterMap[digit];
 
   int charPos = 0;
   // expand bitbask to number of pixels per segment in the proper position
-  for (int x = position * 7; x <= position * 7 + 6; x++) {
+  for (int x = (position - 1) * 7; x <= (position - 1) * 7 + 6; x++) {
 
     if (bitmask.charAt(charPos) == '1') {
       // Lighting up this segment
-      for (int pix = 0; pix <= pixPerSeg; pix++) {
+      for (int pix = 0; pix <= pixPerSeg - 1; pix++) {
         strip->setPixelColor((x * pixPerSeg + pix),
                              strip->Color(RED, GREEN, BLUE));
       }
 
     } else {
       // Turning off this up this segment.
-      for (int pix = 0; pix <= pixPerSeg; pix++) {
+      for (int pix = 0; pix <= pixPerSeg - 1; pix++) {
         strip->setPixelColor((x * pixPerSeg + pix), 0);
       }
     }
     charPos++;
+  }
+}
+
+void Seven_Segment_Pixel::updateDelimiter(uint16_t delimeter, uint8_t RED,
+                                          uint8_t GREEN, uint8_t BLUE) {
+
+  int digitsOffset = digPerDisp * pixPerSeg * 7;
+
+  for (int pix = digitsOffset + delimeter * pixPerDelim - pixPerDelim;
+       pix <= digitsOffset + delimeter * pixPerDelim; pix++) {
+    strip->setPixelColor(pix, strip->Color(RED, GREEN, BLUE));
   }
 }
