@@ -18,7 +18,7 @@ public:
                       uint16_t n, uint8_t p, uint8_t t);
   ~Seven_Segment_Pixel();
 
-  void beginDisplay(), showDisplay(),
+  void begin(), show(), setPixelColor(uint16_t n, uint32_t c),
       updateDigit(uint16_t position, uint16_t digit, uint8_t RED, uint8_t GREEN,
                   uint8_t BLUE),
       updateDelimiter(uint16_t delimeter, uint8_t RED, uint8_t GREEN,

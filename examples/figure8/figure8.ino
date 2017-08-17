@@ -33,10 +33,9 @@ This example code is in the public domain.
 #define PIXPERDELIM 0
 
 // When we instatiate a display object we supply the number of digits in the
-// custom built display,
-// as well as the number of pixles per segment. Additionally we pass the ususal
-// Adafruit_NeoPixel arguments\
-// for object instatiation.
+// custom built display,as well as the number of pixels per segment.
+// Additionally we pass the ususal Adafruit_NeoPixel arguments for object
+// instatiation.
 
 Seven_Segment_Pixel display1 =
     Seven_Segment_Pixel(DIGITS, PIXPERSEG, NUMDELIMS, PIXPERDELIM, NUMPIXELS,
@@ -47,8 +46,7 @@ int delayval = 300;
 int count = 0;
 
 void setup() {
-  display1.beginDisplay(); // This function is a wrapper for Adafruit_NeoPixel
-                           // begin();
+  display1.begin(); // This function calls Adafruit_NeoPixel begin();
 }
 
 int figure8[] = {17, 16, 11, 12, 17, 15, 14, 13};
@@ -59,11 +57,11 @@ void loop() {
                          random(0, 255));
   }
   count++;
-  display1.showDisplay();
+  display1.show();
   if (count == 8) {
     count = 0;
   }
-  display1.showDisplay();
+  display1.show();
 
   delay(delayval);
 }

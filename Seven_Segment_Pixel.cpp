@@ -21,9 +21,15 @@ Seven_Segment_Pixel::Seven_Segment_Pixel(uint16_t digitsPerDisplay,
 //<<destructor>>
 Seven_Segment_Pixel::~Seven_Segment_Pixel() {}
 
-void Seven_Segment_Pixel::beginDisplay() { strip->begin(); }
+void Seven_Segment_Pixel::begin() { strip->begin(); }
 
-void Seven_Segment_Pixel::showDisplay() { strip->show(); }
+void Seven_Segment_Pixel::show() { strip->show(); }
+
+void Seven_Segment_Pixel::setPixelColor(uint16_t n, uint32_t c){
+    strip->setPixelColor(n, c);}
+//void Seven_Segment_Pixel::Color() {
+//  strip->Color(255, 255,255 )
+//}
 
 void Seven_Segment_Pixel::updateDigit(uint16_t position, uint16_t digit,
                                       uint8_t RED, uint8_t GREEN,
