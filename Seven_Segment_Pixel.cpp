@@ -27,9 +27,6 @@ void Seven_Segment_Pixel::show() { strip->show(); }
 
 void Seven_Segment_Pixel::setPixelColor(uint16_t n, uint32_t c){
     strip->setPixelColor(n, c);}
-//void Seven_Segment_Pixel::Color() {
-//  strip->Color(255, 255,255 )
-//}
 
 void Seven_Segment_Pixel::updateDigit(uint16_t position, uint16_t digit,
                                       uint8_t RED, uint8_t GREEN,
