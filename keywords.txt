@@ -1,0 +1,21 @@
+#######################################
+# Syntax Coloring Map For Seven_Segment_Pixel
+####################################### 
+# Class
+#######################################
+
+Seven_Segment_Pixel	KEYWORD1
+
+#######################################
+# Methods and Functions 
+#######################################	
+
+updateDigit	KEYWORD2
+updateDelimiter	KEYWORD2
+show			KEYWORD2
+begin			KEYWORD2
+setPixelColor   KEYWORD2
+
+#######################################
+# Constants 
+#######################################
