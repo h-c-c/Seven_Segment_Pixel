@@ -12,9 +12,9 @@ Seven_Segment_Pixel	KEYWORD1
 
 updateDigit	KEYWORD2
 updateDelimiter	KEYWORD2
-show			KEYWORD2
-begin			KEYWORD2
-setPixelColor   KEYWORD2
+show	KEYWORD2
+begin	KEYWORD2
+setPixelColor	KEYWORD2
 
 #######################################
 # Constants 
